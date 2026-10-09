@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>NUNES Product Research & IndiaMART V4.1</title>
+<title>NUNES Catalogue Studio — Preview</title>
 <style>
 :root{
   --navy:#071b43;--navy2:#0d2b67;--blue:#2d63e2;--blue2:#6d8df2;
@@ -52,8 +52,9 @@ button,input,textarea{font:inherit}button{cursor:pointer}button:disabled{opacity
 @media(max-width:980px){.stat-grid{grid-template-columns:repeat(2,1fr)}.dashboard-action{grid-template-columns:1fr}.attention-list{grid-template-columns:1fr}.flow.five{grid-template-columns:repeat(5,1fr)}.mode-toggle{font-size:11px;padding:8px 9px}}
 @media(max-width:620px){.stat-grid{grid-template-columns:1fr 1fr}.simple-dashboard{padding:16px}.dashboard-head h1{font-size:22px}.recent-box{align-items:flex-start;flex-direction:column}.flow.five .flow-step{padding:8px 6px}.flow.five .flow-num{width:24px;height:24px;font-size:11px}}
 </style>
-</head>
+<style id="nunes-catalogue-preview-style">.nunes-format-banner{padding:20px 28px;background:#f5f7ff;border-bottom:1px solid #d8def3}.nunes-format-banner h2{margin:0 0 6px;color:#102b5b;font-size:22px}.nunes-format-banner p{margin:0 0 12px;color:#50617b}.nunes-format-options{display:flex;gap:12px;flex-wrap:wrap}.nunes-format-options label{display:flex;align-items:center;gap:9px;background:white;border:1px solid #d4def1;border-radius:12px;padding:12px 16px;cursor:pointer}.nunes-format-banner small{display:block;color:#61708a;margin-top:9px}#sellerBtn{display:none!important}</style></head>
 <body class="simple-mode">
+<section class="nunes-format-banner" aria-label="Catalogue format"><h2>NUNES Catalogue Studio — Preview</h2><p>Choose your PDF format before preparing a product.</p><div class="nunes-format-options"><label><input type="radio" name="nunesCatalogueFormat" value="catalogue" checked> Detailed Catalogue (Itron style)</label><label><input type="radio" name="nunesCatalogueFormat" value="mini" disabled> Mini Catalogue (coming after backend integration)</label></div><small>Preview stage: the original detailed PDF workflow is retained. Mini Catalogue and remote worker are not active yet.</small></section>
 <div class="app">
   <header class="topbar">
     <div class="brand">
@@ -726,7 +727,7 @@ function renderStatus(s){
   if(s.result&&(s.result.status==='SELLER_REVIEW_REQUIRED'||s.result.status==='SELLER_COMPLETED'))loadCompletion();
 }
 async function poll(){try{const r=await fetch('/api/status?t='+Date.now());if(r.ok)renderStatus(await r.json())}catch{}setTimeout(poll,900)}
-initMode();setGreeting();setEditMode(false);initSheetStatus();refreshDashboardStats();updateSmartAction();poll();autoConnect();
+initMode();setGreeting();setEditMode(false);initSheetStatus();refreshDashboardStats();updateSmartAction();poll();/* IndiaMART auto-login disabled in catalogue preview */
 </script>
 </body>
 </html>
